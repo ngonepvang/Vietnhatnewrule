@@ -1,5 +1,5 @@
 # 00-LOAD-mrtu.md — BỘ NẠP hệ Instruction Mr Tú
-Phiên bản: LOAD-2.4 · 03/11/2026 · Đọc file này TRƯỚC MỌI VIỆC
+Phiên bản: LOAD-2.5 · 11/11/2026 · Đọc file này TRƯỚC MỌI VIỆC
 
 File này KHÔNG chứa quy tắc viết bài. Nhiệm vụ duy nhất: nạp file nào, thứ tự nào, xung đột xử lý ra sao.
 
@@ -19,9 +19,10 @@ Ghép: BASE + tên file. Tên file phải khớp tuyệt đối, sai 1 ký tự 
 | `mrtu-v6.1-everdigm.md` | Bản con 6.1 — cụm Hyundai Everdigm: sitemap · slug · model · registry | `~~6.1` |
 | `mrtu-v6.2-soosan.md` | Bản con 6.2 — cụm Soosan: sitemap · slug · model · registry | `~~6.2` |
 | `mrtu-v6.3-mam-quay-toa.md` | Bản con 6.3 — cụm mâm quay toa xe tải gắn cẩu: sitemap · slug · dòng sản phẩm · registry | `~~6.3` |
+| `mrtu-v6.4-kanglim.md` | Bản con 6.4 — cụm xe tải gắn cẩu Kanglim: site map · slug · mã model · registry · luật số cốt lõi · bảng audit Product / Collection | `~~6.4` |
 | `mrtu-v6.6-cau-cu.md` | Bản con 6.6 — cụm cẩu cũ (cẩu bánh lốp · cẩu địa hình · cẩu bánh xích đã qua sử dụng): site map · slug · mã model · registry · luật số cốt lõi · bảng audit | `~~6.6` |
 
-Cả 7 file đều mang đuôi `.md`. Không tồn tại file nào khác, không tự suy ra tên file mới.
+Cả 8 file đều mang đuôi `.md`. Không tồn tại file nào khác, không tự suy ra tên file mới.
 
 Đổi tên bất kỳ file nào ⇒ phải cập nhật đồng thời: bảng L2 này (`~~load`) **và** dòng `companions` trong frontmatter `Haravan.md` (`~~6.H`).
 
@@ -42,17 +43,17 @@ Sự cố thật 09/09/2026: `Haravan.md` bị ghi bằng nội dung của `mrtu
 | `~ss` `~ssc` `~ssp` `~sscl` `~ssb` (xuất HTML Haravan) | `mrtu-v6.0-core.md` + `Haravan.md` + bản con của cụm |
 | `~S` `~C` `~sp` `~scl` `~sb` (xuất markdown) | `mrtu-v6.0-core.md` + bản con + chỉ mục **H8** của `Haravan.md` |
 | `~A` (nghiên cứu từ khoá) · `~audit` | `mrtu-v6.0-core.md` + bản con |
-| `~~6.0` / `~~6.H` / `~~6.1` / `~~6.2` / `~~6.3` / `~~6.6` / `~~load` | đúng 1 file tương ứng |
+| `~~6.0` / `~~6.H` / `~~6.1` / `~~6.2` / `~~6.3` / `~~6.4` / `~~6.6` / `~~load` | đúng 1 file tương ứng |
 | `~1` (dịch) | không nạp gì |
 
-**Bản con của cụm:** bài về Hyundai Everdigm → 6.1 · bài về Soosan → 6.2 · bài về mâm quay toa xe tải gắn cẩu → 6.3 · bài về cẩu cũ (cẩu bánh lốp, cẩu địa hình, cẩu bánh xích đã qua sử dụng — không gồm xe tải gắn cẩu) → 6.6 · cụm khác → chưa có bản con, ghi rõ "chưa có bản con 6.x cho cụm này" và chỉ dùng v6.0 + v6.H.
+**Bản con của cụm:** bài về Hyundai Everdigm → 6.1 · bài về Soosan → 6.2 · bài về Kanglim → 6.4 · bài về mâm quay toa xe tải gắn cẩu → 6.3 · bài về cẩu cũ (cẩu bánh lốp, cẩu địa hình, cẩu bánh xích đã qua sử dụng — không gồm xe tải gắn cẩu) → 6.6 · cụm khác → chưa có bản con, ghi rõ "chưa có bản con 6.x cho cụm này" và chỉ dùng v6.0 + v6.H.
 
 **Thứ tự nạp:** v6.0-core → Haravan → bản con 6.x.
 
 ## ▶️ L4. Lệnh `~load`
 
 - `~load` = nạp v6.0-core + Haravan.
-- `~load 6.1` / `~load 6.2` / `~load 6.3` / `~load 6.6` = nạp thêm bản con tương ứng.
+- `~load 6.1` / `~load 6.2` / `~load 6.3` / `~load 6.4` / `~load 6.6` = nạp thêm bản con tương ứng.
 - `~load nhẹ` = chỉ v6.0-core (dùng cho `~A`, `~audit`).
 
 ## ▶️ L5. Báo cáo sau khi nạp — đúng 1 dòng, chưa viết gì
@@ -86,6 +87,7 @@ Không in lại nội dung file đã nạp ra chat. Không tự tóm tắt/rút 
 
 ## ▶️ L9. Nhật ký
 
+- **11/11/2026 — LOAD-2.5.** Thêm bản con **6.4 — cụm xe tải gắn cẩu Kanglim** (`mrtu-v6.4-kanglim.md`, bản 6.4.0) vào bảng L2, lệnh `~~6.4` ở L3, quy tắc chọn bản con ở L3 (bài về Kanglim → 6.4), `~load 6.4` ở L4; L2 đổi "7 file" → "8 file". Không đổi luật nạp, luật xung đột, xử lý fetch lỗi. Nhắc: cập nhật dòng `companions` trong frontmatter `Haravan.md` (`~~6.H`) để thêm 6.4 và LOAD-2.5.
 - **03/11/2026 — LOAD-2.4.** Thêm bản con **6.6 — cụm cẩu cũ** (`mrtu-v6.6-cau-cu.md`, bản 6.6) vào bảng L2, lệnh `~~6.6` ở L3, quy tắc chọn bản con ở L3 (cẩu cũ → 6.6, xe tải gắn cẩu vẫn thuộc 6.1/6.2/6.3), `~load 6.6` ở L4; L2 đổi "6 file" → "7 file". Đồng bộ `Haravan.md` lên **6.H.5** (frontmatter `companions` đã thêm 6.6 và LOAD-2.4; đầu ra `~ss*` đổi thành 1 file có khối biên tập trên cùng + nút Copy lấy thân bài sạch). Không đổi luật nạp, luật xung đột, xử lý fetch lỗi.
 - **09/09/2026 — LOAD-2.3.** File 6.3 trên gist đã đổi tên thành `mrtu-v6.3-mam-quay-toa.md`; sửa L2 theo tên mới và **xoá cảnh báo ngược của LOAD-2.2** (bản đó ghi "không có đuôi .md, thêm .md sẽ 404" — kiểm tra lại 09/09/2026: có `.md` → HTTP 200, không `.md` → 404). Cả 6 file nay thống nhất đuôi `.md`. Rút gọn L1 và L7 cho khớp. Thêm vào L8 luật **trả nguyên file để dán đè**.
 - **09/09/2026 — LOAD-2.2.** Mô tả `Haravan.md` đổi `P1–P18` → P1–P22 (bản SKILL 6.H.3); mô tả `mrtu-v6.0-core.md` bổ sung mục 10.1 + Quality Gate C1–C22. Thêm **L2.1 Kiểm vai file ngay khi nạp** sau sự cố `Haravan.md` bị ghi đè bằng nội dung v6.0. Bổ sung L5 (chặn xuất HTML khi file sai vai), L6 điểm 2 và 5, L7 (xử lý 404).
