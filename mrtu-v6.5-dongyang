@@ -1,0 +1,269 @@
+---
+name: dongyang-sitemap
+description: Sitemap chuẩn SEO, bản đồ phân vai từ khóa (chống cannibalization), đối chiếu dữ liệu GSC 90 ngày, đề xuất bài viết bổ trợ và backlog chuẩn hóa cụm sản phẩm/bài viết xe tải gắn cẩu Dongyang (DY) trên vietnhatcorp.net. Kế thừa mrtu-v6.0-core.md và Haravan.md.
+version: 6.5.1
+updated: 2026-11-13
+domain: https://vietnhatcorp.net
+---
+
+# SKILL.MD — SITEMAP, BẢN ĐỒ TỪ KHÓA & KẾ HOẠCH BIÊN TẬP CẨU DONGYANG (v6.5.1)
+
+Tài liệu nghiên cứu thực địa toàn bộ cụm **cẩu tự hành Dongyang (DY)** trên website `vietnhatcorp.net` (`vietnhatauto.myharavan.com`), tổng hợp từ **331 sản phẩm Haravan**, **486 URL Sitemap**, kiểm tra HTTP/HTML trực tiếp trên **15 sản phẩm** + **6 bài Blog/Collection**, dữ liệu **Google Search Console 90 ngày** (`2026-08-12 → 2026-11-10`, property `sc-domain:vietnhatcorp.net`) và **5 bộ Catalog chính hãng VIPEC – DY**.
+
+> **Quyết định biên tập đã chốt (Mr Tú xác nhận):**
+> 1. **Thông số kỹ thuật:** Chuẩn hóa 100% theo **5 Catalog chính hãng VIPEC – DY** (`SS1414/SS1416/SS1924`, `SS1926/SS1926 II/SS1956 ACE`, `SS1966/SS2036/SS2037`, `SS2724/SS2725/SS2725LB`, `SS3504/SS3506`).
+> 2. **Giữ Dongfeng N270:** Giữ nguyên sản phẩm `#03 dongfeng-n270-cau-dongyang-ss2036-8-tan` (`1050397732`) trong cụm Dongyang (không loại bỏ như cụm Soosan).
+> 3. **Mở rộng & 301 Blog:** Đã duyệt viết mới **D-B5 → D-B8** và **301 Redirect `/blogs/news/trai-nghiem-dongyang-15-tan` → `/blogs/news/cau-dongyang-ss3506-15-tan` (D-B5)**.
+
+> **Nguyên tắc kế thừa & ranh giới hệ Instruction Mr Tú (`00-LOAD-mrtu.md`):**
+> - Kế thừa 100% **`mrtu-v6.0-core.md`** (tầng nội dung, luật khuyết dữ liệu 10.1, Quality Gate C1–C22) và **`Haravan.md`** (tầng trình bày v6.H.5, định mức H8, Quality Gate P1–P22).
+> - **Luật số đếm mở (v6.0 mục 15):** Các bảng thống kê bên dưới là **sổ theo dõi kỹ thuật nội bộ**; khi biên tập HTML đẩy lên web, **tuyệt đối không** đưa con số đếm cứng (như "14 cấu hình", "6 model") vào SEO Title, Meta Description, H2, 100 từ đầu hay CTA.
+> - **Ranh giới cụm:** Sản phẩm `/products/mam-quay-toa-dongyang` (`1065448312` — GSC `2.227 imp`, `45 clicks`, vị trí trung bình `1.0–4.1`) thuộc bản con **`mrtu-v6.3-mam-quay-toa.md`**, không gộp vào danh sách xe tải gắn cẩu ở mục 3; chỉ liên kết chéo sang phụ tùng khi cần.
+
+---
+
+## 1. TỔNG QUAN KIẾN TRÚC SILO CỤM DONGYANG
+
+```mermaid
+graph TD
+    Home["Trang chủ: /"] --> Pillar["Pillar chung: /pages/xe-tai-gan-cau"]
+    Home --> ColBrand["Collection Hãng: /collections/dongyang (ID: 1002644466)"]
+
+    subgraph TANG_COLLECTION_TAI_TRONG["Collection Tải Trọng Dùng Chung (Multi-brand)"]
+        CT5["/collections/xe-tai-gan-cau-5-tan"]
+        CT8["/collections/xe-tai-gan-cau-7-8-tan"]
+        CT12["/collections/xe-tai-gan-cau-10-13-tan"]
+        CT15["/collections/xe-tai-gan-cau-15-tan"]
+    end
+
+    subgraph SAN_PHAM_LIVE["14 Xe Tải Gắn Cẩu Dongyang Live"]
+        ColBrand --> G67["Nhóm 6–7T (SS1416 / SS1926): Hino FL8JT7A · Dongfeng 6×4"]
+        ColBrand --> G8["Nhóm 8T (SS2036 / SS2037): Hino FM8JW7A ×2 · Isuzu FVM · Dongfeng N270 · UD 3 chân"]
+        ColBrand --> G12["Nhóm 12T (SS2725LB): Hyundai HD320 · Chenglong LZ1310 · Dongfeng L315"]
+        ColBrand --> G15["Nhóm 15T (SS3506): Dongfeng L315 · Dongfeng KL340 · Chenglong 5 chân · UD 8×4"]
+    end
+
+    subgraph BLOG_HIEN_CO["Blog Dongyang Live & Chuyển Hướng"]
+        ColBrand --> BE["EEAT Hãng: /blogs/news/cau-dongyang-co-tot-khong"]
+        ColBrand --> BG["Bảng giá: /blogs/news/bang-gia-xe-cau-dongyang-2026"]
+        ColBrand --> BDT["Biểu đồ tải: /blogs/news/bieu-do-tai-cau-dongyang"]
+        EXP["Cũ: /blogs/news/trai-nghiem-dongyang-15-tan"] -->|301 Redirect| DB5
+    end
+
+    subgraph DE_XUAT_BO_TRO["Blog Hub Model & So Sánh (Đã Duyệt Tạo Mới)"]
+        ColBrand --> DB5["D-B5: /blogs/news/cau-dongyang-ss3506-15-tan (Ưu tiên 1)"]
+        ColBrand --> DB6["D-B6: /blogs/news/cau-dongyang-ss2036-va-ss2037-8-tan (Ưu tiên 1)"]
+        ColBrand --> DB7["D-B7: /blogs/news/cau-dongyang-ss2725lb-12-tan (Ưu tiên 2)"]
+        ColBrand --> DB8["D-B8: /blogs/news/cau-dongyang-tam-trung-ss1416-ss1926 (Ưu tiên 3)"]
+    end
+```
+
+---
+
+## 2. DANH MỤC TẦNG TRÊN & COLLECTION HUB
+
+| Tầng | URL Canonical | ID Haravan | GSC 90 ngày (imp / click / pos) | Vai trò & Lỗi tồn đọng cần sửa |
+| :--- | :--- | :---: | :---: | :--- |
+| Pillar chung | `/pages/xe-tai-gan-cau` | `1004442492` | Dùng chung | Không sở hữu; giữ nguyên để nhận link ngược lên từ Dongyang |
+| **Collection Hãng** | `/collections/dongyang` | `1002644466` | **528 imp / 2 click / pos ~6.5** | **Trang trụ cột thương hiệu.** Hiện còn chữ cấm `"cần bổ sung"`, năm cũ `2020/2021/2023`, link 301 cũ `hino-fm-cau-dongyang-ss2037-8-tan-7-khuc-25m`, và **chỉ link 3/14 sản phẩm** trong thân bài |
+| Collection 5T | `/collections/xe-tai-gan-cau-5-tan` | `—` | Dùng chung | Chứa nhóm 5–6 tấn (`hino-fl8jt7a-cau-dongyang-ss1416-6-tan`) |
+| Collection 7–8T | `/collections/xe-tai-gan-cau-7-8-tan` | `1004784492` | Dùng chung | Chứa `SS1926`, `SS2036`, `SS2037` |
+| Collection 10–13T | `/collections/xe-tai-gan-cau-10-13-tan` | `1004784510` | Dùng chung | Chứa nhóm `SS2725LB`. **Cảnh báo:** thân bài hiện chứa link **404** `/products/12-tan-dongfeng-ss2725lb` và link **301** `/products/chenglong-gan-cau-dy-12-tan-ss2725lb` |
+| Collection 15T | `/collections/xe-tai-gan-cau-15-tan` | `1003209774` | Dùng chung | Chứa 4 cấu hình `SS3506` |
+
+---
+
+## 3. DANH MỤC 14 SẢN PHẨM XE TẢI GẮN CẨU DONGYANG LIVE (AUDIT HIỆN TRẠNG)
+
+> **Quy ước slug chuẩn:** `/products/{chassis}-cau-dongyang-{model}-{X}-tan` (toàn bộ 14 handle đang live đã có traffic/index nên **GIỮ NGUYÊN 100% URL đang live**, không đổi slug tránh mất index).
+
+| # | Slug (`/products/...`) | ID Haravan | Xe nền (Cấu hình) | Model cẩu | GSC 90d (imp) | Tồn đọng SEO & Dữ liệu bắt buộc xử lý |
+| :-: | :--- | :---: | :--- | :--- | :---: | :--- |
+| **01** | `hino-fl8jt7a-cau-dongyang-ss1416-6-tan` | `1035032559` | Hino FL8JT7A (6×2 · 206 kW) | **SS1416** *(7T · 6 đốt)* | `1` | **0 ảnh trong thân bài (`bImg=0`)**; Meta ngắn `129` ký tự; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"`, năm cũ `2021`; bài live chép nhầm số của `SS1406` (`6.000 kg @ 2m`, `16,3m`, `18,3m`) — **Catalog VIPEC DY SS1416 chuẩn khớp hồ sơ ĐK: `7.000 kg @ 2,0 m`, `15,5 m`, `17,3 m`** |
+| **02** | `dongfeng-6x4-cau-dongyang-ss1926-7-tan` | `1034979157` | Dongfeng 3 chân 6×4 (YC6A270-50 · 199 kW) | **SS1926** *(7,4T · 6 đốt)* | `30` | **Title quá dài (`79` ký tự)** & ghi nhầm `"8 tấn"` dù slug/SEO Title là `7 tấn`; **Tags = rỗng**; **0 internal link**; bài live sai số (`17.500 kg.m`, `7.000 kg @ 2,7m`, `19m`, `22m`) — **Catalog SS1926 chuẩn: `19.000 kg.m`, `7.400 kg @ 2,0m`, `19,8 m`, `22,7 m`** |
+| **03** | `dongfeng-n270-cau-dongyang-ss2036-8-tan` | `1050397732` | Dongfeng N270 6×4 (270 HP) | **SS2036** *(8T · 6 đốt)* | `5` | Còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"`, năm cũ; thiếu `Momen 19.000 kg.m` — **[ĐÃ CHỐT] Giữ nguyên model xe nền N270 trong cụm Dongyang** |
+| **04** | `hino-fm8jw7a-cau-dongyang-ss2036-8-tan` | `1035036177` | Hino FM8JW7A 6×4 (J08E-WD · 206 kW) | **SS2036** *(8T · 6 đốt)* | `93` | Meta hơi dài (`163`); còn link 301 `/products/dongfeng-cau-dongyang-ss2036-8-tan`; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"`, năm `2023` |
+| **05** | `ud-quester-3-chan-cau-dongyang-ss2036-8-tan` | `1071207529` | UD Quester CWE350 6×4 (350 HP) | **SS2036** *(8T · 6 đốt)* | `13` | Thiếu chỉ số momen SS2036; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"`, năm cũ |
+| **06** | `hino-fm8jw7a-cau-dongyang-ss2037-8-tan` | `1071174309` | Hino FM8JW7A-U 6×4 (J08E-WA · 206 kW) | **SS2037** *(8T · 7 đốt)* | `4` | Còn link 301 `/products/dongfeng-cau-dongyang-ss2036-8-tan`; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"` (giá VNĐ / dự án) |
+| **07** | `isuzu-fvm-cau-dongyang-ss2037-8-tan` | `1075988297` | Isuzu FVM60WE5A 6×2 (6NX1E5RC · 280 PS) | **SS2037** *(8T · 7 đốt)* | `11` | Thiếu thông số kích thước bao, tự trọng, tổng tải & chiều cao nâng; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"` |
+| **08** | `hyundai-hd320-cau-dongyang-ss2725lb-12-tan` | `1035037729` | Hyundai HD320 8×4 (D6CC · 380 PS) | **SS2725LB** *(12T · 5 đốt)* | `66` (`1 clk`) | **Vẫn còn Variant `Default Title` (giá `0`)**; còn link 301 `/products/dongfeng-cau-dongyang-ss2725lb-12-tan`; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"`, năm `2023` |
+| **09** | `chenglong-lz1310-gan-cau-dy-ss2725lb-12-tan` | `1050238272` | Chenglong LZ1310 8×4 (YC6L350-50 · 257 kW) | **SS2725LB** *(12T · 5 đốt)* | `69` | Variant dạng slug (`chenglong-gan-cau-dy-12-tan-ss2725lb`); **Lỗi typo mô-men `"2 tấn.m"`** trong thân bài (đúng phải là `29 tấn.m`); **0 internal link**; còn `"Đang cập nhật"` |
+| **10** | `dongfeng-l315-cau-dongyang-ss2725lb-12-tan` | `1047956051` | Dongfeng L315 8×4 (ISL9.5-315E51A · 315 HP) | **SS2725LB** *(12T · 5 đốt)* | `5` | **Meta quá dài (`221` ký tự)**, SEO Title chạm trần `70` ký tự; **0 internal link**; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"`, năm cũ |
+| **11** | `dongfeng-hoang-huy-315hp-cau-dongyang-ss3506-15-tan` | `1034975576` | Dongfeng L315 8×4 (ISL9.5-315E51A · 315 HP) | **SS3506** *(15T · 6 đốt)* | **2.120** (`10 clk`, pos `4.6`) | **Sản phẩm kéo traffic cao nhất nhóm xe**, đang gánh hộ intent model `SS3506`; Title vẫn còn `"Hoàng Huy"` & tag `2023`; còn `"Đang cập nhật"`, `"CẦN BỔ SUNG"` *(Giữ URL nguyên gốc để bảo toàn thứ hạng 3.0–4.6)* |
+| **12** | `dongfeng-kl-340hp-cau-dongyang-ss3506-15-tan` | `1074784456` | Dongfeng KL340 8×4 (ISL9.5-340E51A · 340 PS) | **SS3506** *(15T · 6 đốt)* | `12` | **Meta dài `183` ký tự**; **0 internal link**; còn `"Đang cập nhật"`, năm cũ; Tag dính chữ hoa `"DOngyang"` |
+| **13** | `chenglong-5-chan-cau-dongyang-ss3506-15-tan` | `1057067502` | Chenglong LZ1340 10×4 (YC6L · 257 kW) | **SS3506** *(15T · 6 đốt)* | `8` | **0 internal link**; mở bài tự nhắc `"ghi rõ Đang cập nhật"`; còn `"Đang cập nhật"`, `"Chưa có dữ liệu"` |
+| **14** | `ud-quester-8x4-cau-dongyang-ss3506-15-tan` | `1049371538` | UD Quester CGE350 8×4 (350 HP) | **SS3506** *(15T · 6 đốt)* | `9` | Meta ngắn `121`; **2 link 404** (`/blogs/news/dang-kiem-xe-gan-cau` & `/blogs/news/so-sanh-cau-15-tan`); còn `"CẦN BỔ SUNG"` |
+
+*(Ghi chú kiểm tra chung: Toàn bộ 14 sản phẩm trên hiện đều **không bị mojibake (`0/0`)** và 13/14 sản phẩm trừ `#08 Hyundai HD320` đã có tên biến thể cụ thể; tuy nhiên toàn bộ 14/14 sản phẩm đều đang vi phạm mục 10.1 (`Đang cập nhật` / `CẦN BỔ SUNG`) và còn mốc năm cũ.)*
+
+---
+
+## 4. CÁC BÀI VIẾT BLOG LIÊN QUAN HIỆN CÓ (AUDIT & RANH GIỚI)
+
+### 4.1. Blog thuộc sở hữu cụm Dongyang
+
+| Mã | URL Blog (`/blogs/news/...`) | ID Haravan | GSC 90d | Vai trò & Lỗi nghiêm trọng cần sửa |
+| :-: | :--- | :---: | :---: | :--- |
+| **D-B1** | `/blogs/news/cau-dongyang-co-tot-khong` | `1003069773` | **317 imp** (`9 clk`, pos `4.6`) | **Bài EEAT thương hiệu chủ lực.** Giữ làm trang đáp `cẩu Dongyang là gì / có tốt không / xuất xứ Hàn Quốc`; xóa năm cũ trong thân bài, bổ sung link về Hub `SS3506` & `SS2036/2037`. |
+| **D-B2** | `/blogs/news/bang-gia-xe-cau-dongyang-2026` | `1003164286` | `0` | **Trục giá theo hãng.** ❌ **LỖI LỚN:** H2 ghi nhầm `"▶️ Tham khảo xe tải gắn cẩu Soosan thực tế"` và thẻ tag trỏ sang Kanglim (`bieu-do-tai-ks1256g-ii`, `ks2056t-s`, `ks2825`). Cần thay link trỏ xuống **14 Product Dongyang**. |
+| **D-B3** | `/blogs/news/bieu-do-tai-cau-dongyang` | `1003164288` | `0` | **Trục kỹ thuật đọc biểu đồ tải.** ❌ **LỖI LỚN:** Dính lỗi copy-paste y hệt D-B2 (H2 `"Soosan"`, tag `Kanglim`). Bổ sung bảng tải mẫu thực của `SS1416`, `SS1926`, `SS2036`, `SS2037`, `SS2725LB`, `SS3506`. |
+| **D-B4** | `/blogs/news/trai-nghiem-dongyang-15-tan` | `1002773144` | `37 imp` (pos `7.6`) | Bài cũ chuyên kể về **Dongfeng/Dongyang SS3506 15 tấn**, còn link 301 `/products/xe-cau-tu-hanh-15-tan-dongyang` và năm `2025`. **[ĐÃ CHỐT] Tạo 301 Redirect sang Blog Hub mới `/blogs/news/cau-dongyang-ss3506-15-tan` (D-B5)** để giữ sức mạnh URL và gom trọn truy vấn `SS3506`. |
+
+### 4.2. Blog / Cluster dùng chung đa hãng (Chỉ đặt Internal Link, KHÔNG sở hữu)
+
+| URL | Vai trò liên kết | Lưu ý xử lý |
+| :--- | :--- | :--- |
+| `/blogs/news/so-sanh-cau-tu-hanh` | So sánh 4 hãng Hàn (Everdigm – Kanglim – Soosan – Dongyang) | Đã có mặt Dongyang |
+| `/blogs/news/so-sanh-cau-15-tan-everdigm-kanglim-dy-soosan` | So sánh cẩu 15 tấn (`HLC-15026`, `KS5206`, `SS3506`, `SCS1516S`) | Thay link 404 `/blogs/news/so-sanh-cau-15-tan` ở `#14 UD 8×4` trỏ đúng về đây |
+| `/blogs/news/bang-gia-xe-cau-8-tan` | Tổng hợp xe cẩu 8 tấn đa hãng | Đang gánh `cẩu dongyang 8 tấn` (`4 imp`); cần đặt link trỏ về cụm `SS2036`/`SS2037` của Dongyang |
+| `/blogs/news/gia-cau-12-tan` & `/blogs/news/gia-xe-tai-gan-cau-15-tan` | Tổng hợp giá 12T / 15T đa hãng | Chỉ liên kết chéo khi nhắc phân khúc 12T/15T |
+| `/blogs/news/phap-ly-dang-kiem-xe-cau-2026` | Pháp lý đăng kiểm toàn ngành | Thay link 404 `/blogs/news/dang-kiem-xe-gan-cau` ở `#14 UD 8×4` trỏ đúng về đây |
+
+---
+
+## 5. ĐỊNH NGHĨA VỊ TRÍ TỪ KHÓA & LUẬT CHỐNG ĂN THỊT NHAU (KEYWORD POSITION MAP)
+
+### 5.1. Ma trận phân vai 5 tầng (Bắt buộc tuân thủ khi biên tập Title / H1 / Meta / Anchor)
+
+| Tầng | URL sở hữu | Từ khóa ĐƯỢC NHẮM (Primary Intent) | Từ khóa CẤM NHẮM (Tránh tự cắn nhau) |
+| :--- | :--- | :--- | :--- |
+| **1. Pillar Ngành** | `/pages/xe-tai-gan-cau` | `"xe tải gắn cẩu là gì"`, `"cẩu tự hành"` | Tên hãng `Dongyang`, mã `SS…`, `"báo giá"` |
+| **2. Collection Tải** | `/collections/xe-tai-gan-cau-{X}-tan` | `"xe tải gắn cẩu {6/7/8/12/15} tấn"`, `"mua xe cẩu {X} tấn"` | Tên hãng `Dongyang` làm từ khóa chính, mã model `SS…` đơn lẻ |
+| **3. Collection Hãng** | `/collections/dongyang` | `"cẩu Dongyang"`, `"xe tải gắn cẩu Dongyang"`, `"xe cẩu Dongyang"` | Nhắm sâu 1 model đơn lẻ (`dongyang ss3506`, `dongyang ss2037`) làm Title chính |
+| **4A. Blog EEAT Hãng** | `/blogs/news/cau-dongyang-co-tot-khong` | `"cẩu Dongyang có tốt không"`, `"cẩu Dongyang của nước nào"`, `"ưu nhược điểm cẩu Dongyang"` | Giá chi tiết từng cấu hình xe nền |
+| **4B. Blog Giá Hãng** | `/blogs/news/bang-gia-xe-cau-dongyang-2026` | `"giá xe cẩu Dongyang"`, `"bảng giá xe tải gắn cẩu Dongyang"` | Giá xe cẩu 8T/12T/15T chung toàn thị trường |
+| **4C. Blog Kỹ Thuật Chung** | `/blogs/news/bieu-do-tai-cau-dongyang` | `"biểu đồ tải cẩu Dongyang"`, `"cách đọc bảng tải cẩu Dongyang"` | Đánh giá từng mẫu xe nền cụ thể |
+| **4D. Blog Hub Model** | `D-B5` → `D-B8` *(Mục 6)* | `"cẩu Dongyang {SS3506 / SS2036 / SS2037 / SS2725LB / SS1416 / SS1926}"`, thông số, so sánh model | Tên 1 xe nền cụ thể làm tiêu đề chính |
+| **5. Trang Product** | `/products/{xe}-cau-dongyang-{model}-{X}-tan` | **`"{Hãng xe} {Mã xe} gắn cẩu Dongyang {Model}"`** + quy cách thùng/tải/cầu | Từ khóa trần `"cẩu Dongyang"`, `"cẩu Dongyang {Model}"` đứng một mình không kèm xe nền, `"xe cẩu {X} tấn"` trần |
+
+### 5.2. Chẩn đoán ăn thịt từ khóa từ GSC 90 ngày & Cách tách góc kể
+
+| Xung đột thực tế trong GSC | Hiện trạng | Hướng phân tách khi biên tập lại |
+| :--- | :--- | :--- |
+| **`dongyang ss3506` / `ss3506` (`172+ imp`)** | `#11 Dongfeng 315HP` chiếm hết impression (`2.120 imp`, pos `3.0–4.6`), đẩy `#12 KL340`, `#13 Chenglong 5 chân`, `#14 UD 8×4` xuống hạng `58–71`. | Tạo Blog Hub **D-B5 (`cau-dongyang-ss3506-15-tan`)** ôm intent chung `"cẩu Dongyang SS3506"` (kể cả tìm biến thể `SS7506`). Bốn Product SS3506 tách hẳn góc kể theo **xe nền**: `#11 Dongfeng L315 8×4` (cabin cũ tối ưu vốn) · `#12 Dongfeng KL340 8×4` (cabin KL Euro 5 340 PS) · `#13 Chenglong LZ1340 10×4` (5 chân khung kép 8mm) · `#14 UD Quester 8×4` (xe Nhật/Thái 350 HP). |
+| **`dongyang ss2037` (`21 imp`) & `dongyang 2036` (`6 imp`)** | Google đang đẩy `/collections/dongyang` lên thay trang Hub model; còn `#04 Hino FM SS2036` và `#06 Hino FM SS2037` trùng nhau **chính xác mã xe nền Hino FM8JW7A**. | Mở **D-B6 (`cau-dongyang-ss2036-va-ss2037-8-tan`)** giữ intent so sánh & thông số 2 model 8 tấn. Với cặp Product trên cùng xe `Hino FM8JW7A`: `#04` nhấn **6 đốt 19,8 m, thùng dài ~8,68 m, tải cao ~10,2 tấn**; `#06` nhấn **7 đốt 22,6 m, cao 25,6 m, vươn xa công trình điện/kèo thép**. |
+| **`dongyang ss2725lb` (`12 tấn` vs `10 tấn`)** | Cả 3 xe `#08 HD320`, `#09 Chenglong LZ1310`, `#10 Dongfeng L315` đều là 4 chân `8×4` gắn cùng `SS2725LB`. | `#08` = thương hiệu Hàn Quốc đồng bộ **Hyundai D6CC 380 PS**; `#09` = tối ưu tự trọng & động cơ **Yuchai 257 kW Euro 5**; `#10` = xe Trung Quốc phổ thông **Cummins 315 HP, tải chở tới 11,65 tấn**. Dùng **D-B7** chuẩn hóa thông số chính hãng VIPEC DY (`12.000 kg @ 2,0 m` · `29.000 kg.m` · `20,2 m`). |
+| **`cẩu dongyang 8 tấn` (`5 imp`)** | Rơi vào blog chung `/blogs/news/bang-gia-xe-cau-8-tan` và Product `#04 Hino FM SS2036`. | Giữ nguyên từ khóa chung `"xe cẩu 8 tấn"` ở blog/collection tải trọng, trỏ anchor `"cẩu Dongyang 8 tấn SS2036/SS2037"` về **D-B6**. |
+| **Chênh lệch mã `SS1406` vs `SS1416` (`#01`) & `7T vs 8T` (`#02`)** | `#01` gọi tên `SS1416` nhưng bảng trong bài chép nhầm số của `SS1406` (`6.000 kg @ 2m`, `16,3m`, `18,3m`); `#02 SS1926` title ghi `"8 tấn"` dù model `7,4 tấn` (`7 tấn`). | Chuẩn hóa `#01 SS1416` theo catalog VIPEC DY (`7.000 kg @ 2,0 m` · `15,5 m` · `17,3 m`, khớp 100% hồ sơ ĐK) và `#02 SS1926` về **7 tấn** (`7.400 kg @ 2,0 m` · `19.000 kg.m` · `19,8 m`). Mở **D-B8** để giải thích rành mạch nhóm `SS1416` và `SS1926`. |
+
+---
+
+## 6. CÁC BÀI VIẾT BỔ TRỢ (ĐÃ DUYỆT TRIỂN KHAI — ĐỦ 100% CATALOG VIPEC/DY)
+
+| Mã | Ưu tiên | Slug (`/blogs/news/...`) | Tiêu đề SEO đề xuất (< 65 ký tự) | Từ khóa mục tiêu & Vấn đề giải quyết |
+| :-: | :-: | :--- | :--- | :--- |
+| **D-B5** | 🔴 **1** | `cau-dongyang-ss3506-15-tan` | `Cẩu Dongyang SS3506 15 tấn: Thông số & 4 xe nền` | Ôm `"cẩu Dongyang SS3506"`, `"SS3506"`; nhận chuyển hướng **301** từ `trai-nghiem-dongyang-15-tan`, chuẩn hóa thông số `45.000 kg.m` & `15.000 kg @ 3,0 m`, kéo `#11–#14` thoát tự cạnh tranh. |
+| **D-B6** | 🔴 **1** | `cau-dongyang-ss2036-va-ss2037-8-tan` | `Cẩu Dongyang SS2036 (6 đốt) và SS2037 (7 đốt)` | Ôm `"dongyang ss2036"`, `"dongyang ss2037"`, `"cẩu dongyang 8 tấn"`; đối chiếu bảng tải chính hãng `19.000 kg.m` (`19,8 m` vs `22,6 m`), hỗ trợ `#03–#07`. |
+| **D-B7** | 🟡 **2** | `cau-dongyang-ss2725lb-12-tan` | `Cẩu Dongyang SS2725LB 12 tấn: Thông số & Xe 8×4` | Ôm `"dongyang ss2725lb"`, cung cấp bảng tải VIPEC DY chuẩn (`12.000 kg @ 2,0 m`, `29.000 kg.m`, `20,2 m`, `23,2 m`), dẫn link xuống `#08–#10`. |
+| **D-B8** | 🟢 **3** | `cau-dongyang-tam-trung-ss1416-ss1926` | `Cẩu Dongyang tầm trung SS1416 & SS1926: Chọn xe nào?` | Ôm `"dongyang ss1416"`, `"dongyang ss1926"`; đính chính sai lệch `SS1406/SS1416` và `SS1926` (`19.000 kg.m`, `7.400 kg @ 2,0 m`), dẫn link về `#01–#02`. |
+
+---
+
+## 7. MẠNG LƯỚI 301 REDIRECT & LINK CHẾT CẦN XỬ LÝ
+
+### 7.1. Redirect 301 đã tồn tại trên hệ thống (Không trỏ link nội bộ vào URL cũ)
+
+| URL cũ (Đang 301) | URL đích hiện tại (`200 OK`) | Nơi đang bị link nhầm (Phải sửa thành URL đích) |
+| :--- | :--- | :--- |
+| `/products/hino-fm-cau-dongyang-ss2037-8-tan-7-khuc-25m` | `/products/hino-fm8jw7a-cau-dongyang-ss2037-8-tan` | Collection `/collections/dongyang` |
+| `/products/dongfeng-cau-dongyang-ss2036-8-tan` | `/products/dongfeng-n270-cau-dongyang-ss2036-8-tan` | Product `#04 Hino FM SS2036`, `#06 Hino FM SS2037` |
+| `/products/dongfeng-cau-dongyang-ss2725lb-12-tan` | `/products/dongfeng-l315-cau-dongyang-ss2725lb-12-tan` | Product `#08 Hyundai HD320 SS2725LB` |
+| `/products/chenglong-gan-cau-dy-12-tan-ss2725lb` | `/products/chenglong-lz1310-gan-cau-dy-ss2725lb-12-tan` | Collection `/collections/xe-tai-gan-cau-10-13-tan` |
+| `/products/xe-cau-tu-hanh-15-tan-dongyang` | `/collections/xe-tai-gan-cau-15-tan` | Blog `trai-nghiem-dongyang-15-tan` |
+| `/products/xe-tai-gan-cau-15-tan-dongyang-ss3506-tren-nen-xe-ud-quester-8x4-hieu-qua-hon-bao-gio-het` | `/products/ud-quester-8x4-cau-dongyang-ss3506-15-tan` | Ghi nhận trong GSC (`3 imp`) — giữ 301 |
+| `/products/xe-tai-hino-fl8jt7a-gan-cau-dongyang-ss1416-suc-nang-7-tan` | `/products/hino-fl8jt7a-cau-dongyang-ss1416-6-tan` | Ghi nhận trong GSC (`2 imp`) — giữ 301 |
+
+### 7.2. Link nội bộ đang trả 404 (Cần sửa/gỡ ngay khi biên tập)
+
+1. `/products/12-tan-dongfeng-ss2725lb` (trên `/collections/xe-tai-gan-cau-10-13-tan`) → Sửa thành `/products/dongfeng-l315-cau-dongyang-ss2725lb-12-tan`.
+2. `/blogs/news/dang-kiem-xe-gan-cau` (trên `#14 UD Quester 8×4 SS3506`) → Sửa thành `/blogs/news/phap-ly-dang-kiem-xe-cau-2026`.
+3. `/blogs/news/so-sanh-cau-15-tan` (trên `#14 UD Quester 8×4 SS3506`) → Sửa thành `/blogs/news/so-sanh-cau-15-tan-everdigm-kanglim-dy-soosan`.
+4. `/blogs/news/so-sanh-mam-quay-toa-cac-hang` (trên `mam-quay-toa-dongyang`) → Rà sửa ở đợt `6.3 Mâm quay toa`.
+
+### 7.3. Redirect 301 mới cần thiết lập (Đã chốt)
+
+| URL cũ | URL đích mới (`301 Permanent`) | Lý do |
+| :--- | :--- | :--- |
+| `/blogs/news/trai-nghiem-dongyang-15-tan` | `/blogs/news/cau-dongyang-ss3506-15-tan` *(D-B5)* | Giữ toàn bộ `37 imp` (pos `7.6`) từ bài cũ, loại bỏ link 301 vòng và năm `2025`, dồn lực cho Blog Hub `SS3506`. |
+
+---
+
+## 8. BỘ THÔNG SỐ KỸ THUẬT CHUẨN CẨU DONGYANG (NGUỒN CATALOG VIPEC – DY)
+
+> Toàn bộ thông số dưới đây được trích xuất **trực tiếp từ 5 tài liệu Catalog chính hãng VIPEC – DY** do Mr Tú cung cấp (`0` chữ `"CẦN BỔ SUNG"`). Nếu xe nền thiếu thông số tự trọng/tải trọng cho phép chưa có trên hồ sơ ĐK thì bỏ dòng đó theo mục 10.1 `v6.0`, tuyệt đối không bịa số.
+
+### 8.1. Bảng 4 số cốt lõi của các model đang kinh doanh
+
+| Model | ① Sức nâng @ Tầm gần *(★: 6S, STD: 4S)* | ② Momen nâng tối đa | ③ Bán kính làm việc tối đa | ④ Chiều cao làm việc tối đa | Loại cần / Số đoạn | Điểm nhấn phân biệt |
+| :--- | :--- | :--- | :--- | :--- | :---: | :--- |
+| **SS1416** | `7.000 kg @ 2,0 m` | `14.000 kg.m` *(14 tấn.m)* | `15,5 m` *(còn `600 kg`)* | `17,3 m` | Cần hộp / 6 đoạn | Phân khúc 7 tấn trung, khớp hồ sơ ĐK Hino FL8JT7A |
+| **SS1926** | `7.400 kg @ 2,0 m` | `19.000 kg.m` *(19 tấn.m)* | `19,8 m` *(còn `400 kg`)* | `22,7 m` | Cần hộp / 6 đoạn | Phân khúc 7–8 tấn, momen ngang SS2036 nhưng thước tầm ngắn chân 5,7 m |
+| **SS2036** | `8.000 kg @ 2,0 m` *(8.100 kg phía sau)* | `19.000 kg.m` *(19 tấn.m)* | `19,8 m` *(còn `400 kg`)* | `22,7 m` | Cần hộp / 6 đoạn | Bản 8 tấn 6 đốt phổ biến nhất, góc nâng `-17~80°`, chân trước `6,1 m` |
+| **SS2037** | `8.000 kg @ 2,0 m` *(8.100 kg phía sau)* | `19.000 kg.m` *(19 tấn.m)* | `22,6 m` *(còn `280 kg`)* | `25,6 m` | Cần hộp / 7 đoạn | Bản 8 tấn vươn xa nhất (7 đốt), chuyên công trình cao / điện lực |
+| **SS2725LB** | `12.000 kg @ 2,0 m` | `29.000 kg.m` *(29 tấn.m)* | `20,2 m` *(còn `950 kg`)* | `23,2 m` | Cần hộp / 5 đoạn | Hạng nặng 12 tấn, cần dài (LB), 2 xi lanh nâng hạ, tời phụ tiêu chuẩn |
+| **SS3506** | `15.000 kg @ 3,0 m` | `45.000 kg.m` *(45 tấn.m)* | `25,2 m` *(bảng tải `1.000 kg @ 25,3 m`)* | `28,7 m` | Cần hộp / 6 đoạn | Hạng nặng 15 tấn, bơm kép `113,5 × 113,5 L/phút`, chân trước `7,0 m` |
+
+### 8.2. Bảng tải chi tiết & thông số thủy lực – cần – chân chống (VIPEC DY Official)
+
+*(Lưu ý khi đọc nhãn trong bản in catalog VIPEC: dòng `"Tốc độ nâng / hạ cần (m / giây)"` tương ứng tốc độ **ra / thu cần**, còn `"Tốc độ thu / đẩy cần (deg / giây)"` tương ứng góc nâng / thời gian nâng cần. Khi viết bảng HTML trên web cần đặt đúng nhãn dễ hiểu cho khách hàng.)*
+
+#### A. Nhóm tầm trung — `SS1414 · SS1416 · SS1924` và `SS1926 · SS1926 II · SS1956 ACE`
+
+| Chỉ tiêu kỹ thuật | SS1414 | **SS1416** *(Live)* | SS1924 | **SS1926** *(Live)* | SS1926 II | SS1956 ACE |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Sức nâng tối đa (`kg.m`) | `14.000` | **`14.000`** | `18.000` | **`19.000`** | `15.000` | `18.000` |
+| Chiều cao làm việc tối đa (`m`) | `12,4` | **`17,3`** | `16,4` | **`22,7`** | `22,7` | `21,9` |
+| Bán kính làm việc tối đa (`m`) | `10,6` | **`15,5`** | `13,6` | **`19,8`** | `19,8` *(bảng tải `19,0`)* | `19,0` |
+| Bảng tải định mức (`kg / m`, ★: 6S, STD: 4S) | `★7.000/2,0`<br>`4.000/3,5`<br>`2.400/5,9`<br>`1.500/8,3`<br>`1.200/10,6` | **`★7.000/2,0`**<br>`3.800/4,5`<br>`2.100/5,9`<br>`1.250/8,3`<br>`950/10,7`<br>`750/13,1`<br>`600/15,5` | `★7.400/2,0`<br>`3.900/4,5`<br>`2.100/7,6`<br>`1.250/10,6`<br>`850/13,6` | **`★7.400/2,0`**<br>`3.900/4,7`<br>`2.100/7,7`<br>`1.250/10,7`<br>`850/13,7`<br>`600/16,8`<br>`400/19,8` | `★7.000/2,0`<br>`3.550/4,5`<br>`1.750/7,4`<br>`1.050/10,3`<br>`750/13,2`<br>`550/16,1`<br>`400/19,0` | `★8.000/2,0`<br>`4.050/4,5`<br>`2.100/7,4`<br>`1.300/10,3`<br>`950/13,2`<br>`700/16,1`<br>`550/19,0` |
+| Lưu lượng / Áp suất / Thùng dầu | `65,5 L/p` · `210 kgf/cm²` · `90 L` | **`65,5 L/p` · `210` · `90 L`** | `78 L/p` · `210` · `120 L` | **`78 L/p` · `210` · `120 L`** | `78 L/p` · `210` · `120 L` | `78 L/p` · `210` · `120 L` |
+| Loại cần / Số đoạn | Cần hộp / 4 đoạn | **Cần hộp / 6 đoạn** | Cần hộp / 4 đoạn | **Cần hộp / 6 đoạn** | Cần hộp / 6 đoạn | Cần hộp / 6 đoạn |
+| Tốc độ ra cần (`m / giây`) | `7,1 / 19` | **`11,9 / 28,6`** | `8,9 / 28` | **`15,1 / 36`** | `15,1 / 35` | `15,1 / 35` |
+| Góc / thời gian nâng cần (`deg / giây`) | `78 / 12,5` | **`78 / 12,5`** | `80 / 15` | **`80 / 17`** | `80 / 19` | `80 / 19` |
+| Cáp tời & Tốc độ tời (`m/phút`) | `Φ10 × 90m` (`14 / 4 lớp`) | **`Φ10 × 90m` (`14 / 4 lớp`)** | `Φ10 × 100m` (`15 / 4 lớp`) | **`Φ10 × 100m` (`14 / 4 lớp`)** | `Φ10 × 100m` (`14 / 4 lớp`) | `Φ10 × 100m` (`15 / 4 lớp`) |
+| Góc quay / Tốc độ quay | `360°` / `2,0 rpm` | **`360°` / `2,0 rpm`** | `360°` / `2,5 rpm` | **`360°` / `2,5 rpm`** | `360°` / `2,0 rpm` | `360°` / `2,0 rpm` |
+| Chân chống Trước / Sau (Thủy lực) | `5,7 m` / `4,4 m` | **`5,7 m` / `4,4 m`** | `5,7 m` / `4,4 m` | **`5,7 m` / `4,4 m`** | `5,7 m` / `4,4 m` | `5,7 m` / `4,4 m` |
+
+#### B. Nhóm 8 tấn & Hạng nặng — `SS1966 · SS2036 · SS2037`, `SS2724 · SS2725 · SS2725LB` và `SS3504 · SS3506`
+
+| Chỉ tiêu kỹ thuật | SS1966 | **SS2036** *(Live)* | **SS2037** *(Live)* | SS2724 | SS2725 | **SS2725LB** *(Live)* | SS3504 | **SS3506** *(Live)* |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Sức nâng tối đa (`kg.m`) | `19.000` | **`19.000`** | **`19.000`** | `29.000` | `29.000` | **`29.000`** | `45.000` | **`45.000`** |
+| Chiều cao làm việc tối đa (`m`) | `22,7` | **`22,7`** | **`25,6`** | `17,9` | `20,8` | **`23,2`** | `19,6` | **`28,7`** |
+| Bán kính làm việc tối đa (`m`) | `19,8` | **`19,8`** | **`22,6`** | `14,5` | `17,6` | **`20,2`** | `17,2` | **`25,2`** *(tải `25,3`)* |
+| Bảng tải định mức (`kg / m`, ★: 6S, STD: 4S) | `★8.000 (8.100)/2,0`<br>`3.900/4,7`<br>`2.100/7,7`<br>`1.250/10,7`<br>`850/13,7`<br>`600/16,8`<br>`400/19,8` | **`★8.000 (8.100)/2,0`**<br>`3.900/4,7`<br>`2.100/7,7`<br>`1.250/10,7`<br>`850/13,7`<br>`600/16,8`<br>`400/19,8` | **`★8.000 (8.100)/2,0`**<br>`3.500/4,7`<br>`1.800/7,8`<br>`1.000/10,8`<br>`750/13,8`<br>`530/16,7`<br>`380/19,6`<br>`280/22,6` | `★12.000/2,0`<br>`5.600/5,0`<br>`3.250/8,2`<br>`2.350/11,3`<br>`1.700/14,5` | `★12.000/2,0`<br>`5.600/5,0`<br>`3.250/8,2`<br>`2.350/11,3`<br>`1.700/14,5`<br>`1.100/17,6` | **`★12.000/2,0`**<br>`5.500/5,4`<br>`2.900/9,1`<br>`1.850/12,8`<br>`1.250/16,5`<br>`950/20,2` | `★15.000/3,0`<br>`7.500/6,0`<br>`4.000/9,9`<br>`2.500/13,7`<br>`1.750/17,6` | **`★15.000/3,0`**<br>`7.500/6,0`<br>`4.000/9,9`<br>`2.500/13,7`<br>`1.750/17,6`<br>`1.300/21,4`<br>`1.000/25,3` |
+| Lưu lượng dầu (`L/phút`) | `80` | **`78`** | **`78`** | `90 × 90` | `90 × 90` | **`51`** | `126 × 126` | **`113,5 × 113,5`** |
+| Áp suất / Thùng dầu | `210` / `170 L` | **`210` / `170 L`** | **`210` / `170 L`** | `210` / `200 L` | `210` / `200 L` | **`210` / `200 L`** | `210` / `250 L` | **`210` / `250 L`** |
+| Loại cần / Số đoạn | Cần hộp / 6 đoạn | **Cần hộp / 6 đoạn** | **Cần hộp / 7 đoạn** | Cần hộp / 4 đoạn | Cần hộp / 5 đoạn | **Cần hộp / 5 đoạn** | Cần hộp / 4 đoạn | **Cần hộp / 6 đoạn** |
+| Tốc độ ra cần (`m / giây`) | `15,1 / 36` | **`15,1 / 36`** | **`8,9 / 28`** | `12,7 / 30` | `12,7 / 30` | **`14,8 / 35`** | `19,2 / 48` | **`19,2 / 48`** |
+| Góc nâng cần (`deg / giây`) | `-17~80 / 19` | **`-17~80 / 19`** | **`-17~80 / 19`** | `78 / 18` | `78 / 18` | **`78 / 18`** | `80 / 23` | **`80 / 23`** |
+| Cáp tời (`mm × m`) | `Φ10 × 100m` | **`Φ10 × 100m`** | **`Φ10 × 100m`** | `Φ12,5 × 100m` | `Φ10 × 90m` | **`Φ10 × 100m`** | `Φ14 × 100m` | **`Φ14 × 100m`** |
+| Tốc độ tời (`m/phút`) | `14 / 4 lớp` | **`14 / 4 lớp`** | **`15 / 4 lớp`** | `30 / 1 lớp` | `30 / 4 lớp` | **`7,5 / 4 lớp`** | `30 / 1 lớp` | **`7,5 / 4 lớp`** |
+| Góc quay / Tốc độ quay | `360°` / `2,5 rpm` | **`360°` / `2,5 rpm`** | **`360°` / `2,5 rpm`** | `360°` / `2,5 rpm` | `360°` / `2,5 rpm` | **`360°` / `2,5 rpm`** | `360°` / `2,0 rpm` | **`360°` / `2,0 rpm`** |
+| Chân chống Trước / Sau | `6,1 m` / `4,4 m` | **`6,1 m` / `4,4 m`** | **`6,1 m` / `4,4 m`** | `6,2 m` / `5,36 m` | `6,2 m` / `5,36 m` | **`6,2 m` / `5,36 m`** | `7,0 m` / `5,36 m` | **`7,0 m` / `5,36 m`** |
+
+*(Ghi chú: trên `SS1966`, `SS2036`, `SS2037`, giá trị `★ 8.100 kg @ 2,0 m` áp dụng tại khu vực phía sau theo chú thích của VIPEC.)*
+
+### 8.3. Các sai lệch kỹ thuật cần sửa ngay khi biên tập bài live
+
+1. **`#01` Hino FL8JT7A SS1416:** Bài live hiện chép thông số của `SS1406` (`6.000 kg @ 2,0 m`, `16,3 m`, `18,3 m`). Phải sửa theo catalog `SS1416`: **`7.000 kg @ 2,0 m`, `14.000 kg.m`, bán kính `15,5 m` (`600 kg`), cao `17,3 m`** (khớp 100% hồ sơ ĐK).
+2. **`#02` Dongfeng 6×4 SS1926:** Bài live ghi nhầm `"8 tấn"` ở Title và sai thông số `17.500 kg.m`, `7.000 kg @ 2,7 m`, `19,0 m`, `22,0 m`. Phải sửa thành **7 tấn** theo định vị sản phẩm và thông số catalog `SS1926`: **`19.000 kg.m`, `7.400 kg @ 2,0 m`, bán kính `19,8 m` (`400 kg`), cao `22,7 m`**.
+3. **`#06` Hino FM8JW7A SS2037:** Bài live ghi nhầm `18.000 kg.m`. Phải sửa thành **`19.000 kg.m`**, đầy đủ bảng tải 7 đốt tới **`280 kg @ 22,6 m`**.
+4. **`#08–#10` Nhóm SS2725LB (Đặc biệt `#09` Chenglong LZ1310):** Sửa lỗi typo `"2 tấn.m"` thành **`29 tấn.m` (`29.000 kg.m`)** và thống nhất **`12.000 kg @ 2,0 m`** (chính catalog VIPEC cũng công bố `12.000/2,0`), tầm với `20,2 m` (`950 kg`).
+5. **`#11–#14` Nhóm SS3506:** `#13` và `#14` hiện ghi `15.000 kg @ 2,0 m`; phải sửa chuẩn theo catalog `SS3506`: **`15.000 kg @ 3,0 m`**, **`45.000 kg.m`**, bán kính `25,2 m` (bảng tải `1.000 kg @ 25,3 m`), cao `28,7 m`.
+
+---
+
+## 9. LỘ TRÌNH BIÊN TẬP THỰC THI (SẴN SÀNG TRIỂN KHAI)
+
+> Trạng thái: **Đã chốt 100% phương án & dữ liệu Catalog**. Áp dụng quy trình ghi qua **Haravan Admin Browser** (`0` mojibake, kiểm chứng `variants`, `images[].alt`, `tags`, `handle`, `metafields` sau khi lưu).
+
+1. **Đợt 1 — Collection & Sửa lỗi nặng kỹ thuật/SEO (Ưu tiên cao):**
+   - Chuẩn hóa **`/collections/dongyang`** (`1002644466`) và gỡ link `404`/`301` tại **`/collections/xe-tai-gan-cau-10-13-tan`**.
+   - Khắc phục ngay lỗi nặng trên các Product: `#08 Hyundai HD320` (bỏ `Default Title`), `#01 Hino FL8JT7A SS1416` (bổ sung ảnh thân bài + đúng bảng `SS1416`), `#02 Dongfeng 6×4 SS1926` (rút Title `79` ký tự, bỏ `"8 tấn"`, thêm Tags, sửa thông số `19.000 kg.m`), `#09 Chenglong LZ1310` (sửa typo `"2 tấn.m"` → `29 tấn.m`), `#10` & `#12` (rút Meta ≤ 160 ký tự), `#14 UD 8×4` (sửa 2 link 404).
+2. **Đợt 2 — Đồng bộ 14 Product & 3 Blog hiện có (Giữ nguyên `#03 Dongfeng N270`):**
+   - Quét sạch 100% chuỗi cấm mục 10.1 (`Đang cập nhật`, `CẦN BỔ SUNG`, `Chưa có dữ liệu`), năm cũ, link `301` cũ trên cả **14 Product** (cập nhật đúng 4 số cốt lõi + bảng tải VIPEC DY ở mục 8).
+   - Cập nhật **D-B1** (`cau-dongyang-co-tot-khong`), sửa dứt điểm lỗi H2 `"Soosan"` & tag `"Kanglim"` trên **D-B2** (`bang-gia-xe-cau-dongyang-2026`) và **D-B3** (`bieu-do-tai-cau-dongyang`).
+   - Ở `#11 Dongfeng 315HP SS3506` (`1034975576`), giữ nguyên slug để bảo toàn `2.120 imp`, cập nhật tiêu đề sạch năm `2023` và chuẩn thông số `SS3506`.
+3. **Đợt 3 — Mở rộng Blog Hub, 301 Redirect & Khai báo GSC:**
+   - Xuất bản **D-B5** (`cau-dongyang-ss3506-15-tan`) & tạo ngay **301 Redirect `/blogs/news/trai-nghiem-dongyang-15-tan` → `/blogs/news/cau-dongyang-ss3506-15-tan`**.
+   - Lần lượt xuất bản **D-B6** (`SS2036 vs SS2037`), **D-B7** (`SS2725LB`), **D-B8** (`SS1416 & SS1926`), gắn full Internal Link 2 chiều (Collection ↔ Blog Hub ↔ 14 Product) và submit lại Sitemap lên GSC.
